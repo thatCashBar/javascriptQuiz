@@ -1,6 +1,19 @@
 let quizScore = 0;
 let questionInputArr = [];
 let questionsMissedArr = [];
+let questionsArr = 
+[
+    "What is the name of the Operating System produced by Microsoft?",
+    "What year was the very first model of the iPhone released?",
+    "How many 'bits' are in one 'byte'?",
+    "What is often seen as the smallest unit of memory?",
+    "Is Java a type of Operating System?",
+    "What does “HTTP” stand for?",
+    "What does CSS stand for in web development?",
+    "Which email service is owned by Microsoft?",
+    "Google Chrome, Safari, Firefox, and Explorer are different types of what?",
+    "What was Twitter’s original name?"
+];
 let answersArr = 
 [
     "Windows",
@@ -15,35 +28,35 @@ let answersArr =
     "Twitter"
 ];
 
-let answerOne = prompt("What is the name of the Operating System produced by Microsoft?");
-answerOne.toLowerCase();
+let answerOne = prompt(questionsArr[0]);
+answerOne = answerOne.toLowerCase();
 questionInputArr.push(answerOne);
-let answerTwo = prompt("What year was the very first model of the iPhone released?");
-answerTwo.toLowerCase();
+let answerTwo = prompt(questionsArr[1]);
+answerTwo = answerTwo.toLowerCase();
 questionInputArr.push(answerTwo);
-let answerThree = prompt("How many 'bits' are in one 'byte'?");
-answerThree.toLowerCase();
+let answerThree = prompt(questionsArr[2]);
+answerThree = answerThree.toLowerCase();
 questionInputArr.push(answerThree);
-let answerFour = prompt("What is often seen as the smallest unit of memory?");
-answerFour.toLowerCase();
+let answerFour = prompt(questionsArr[3]);
+answerFour = answerFour.toLowerCase();
 questionInputArr.push(answerFour);
-let answerFive = prompt("Is Java a type of Operating System?");
-answerFive.toLowerCase();
+let answerFive = prompt(questionsArr[4]);
+answerFive = answerFive.toLowerCase();
 questionInputArr.push(answerFive);
-let answerSix = prompt("What does “HTTP” stand for?");
-answerSix.toLowerCase();
+let answerSix = prompt(questionsArr[5]);
+answerSix = answerSix.toLowerCase();
 questionInputArr.push(answerSix);
-let answerSeven = prompt("What does CSS stand for in web development?");
-answerSeven.toLowerCase();
+let answerSeven = prompt(questionsArr[6]);
+answerSeven = answerSeven.toLowerCase();
 questionInputArr.push(answerSeven);
-let answerEight = prompt("Which email service is owned by Microsoft?");
-answerEight.toLowerCase();
+let answerEight = prompt(questionsArr[7]);
+answerEight = answerEight.toLowerCase();
 questionInputArr.push(answerEight);
-let answerNine = prompt("Google Chrome, Safari, Firefox, and Explorer are different types of what?");
-answerNine.toLowerCase();
+let answerNine = prompt(questionsArr[8]);
+answerNine = answerNine.toLowerCase();
 questionInputArr.push(answerNine);
-let answerTen = prompt("What was Twitter’s original name?");
-answerTen.toLowerCase();
+let answerTen = prompt(questionsArr[9]);
+answerTen = answerTen.toLowerCase();
 questionInputArr.push(answerTen);
 
 function GradeQuestion(question)
@@ -166,20 +179,23 @@ function GradeQuiz()
     GradeQuestion(answerTen);
 
     console.log("\nQuiz Completed!");
-    console.log(`You scored ${quizScore}/100`);
+    console.log(`You scored ${quizScore}/100.`);
 
-    if (quizScore == 100)
+    console.log("\n--- Quiz Results ---"), console.log("");
+    for (i = 0; i < questionInputArr.length; i++)
     {
-        console.log("Great Job!");
+        console.log(`Question #${i+1}: ${questionsArr[i]}`);
+        console.log(`Correct Answer: "${answersArr[i]}"`);
+        console.log(`You answered: ${questionInputArr[i]}`);
     }
-    else
+    if (quizScore != 100)
     {
-        console.log("Questions Missed:");
+        console.log(`\nUh oh, You've missed ${questionsMissedArr.length} question(s)!`);
         for (i = 0; i < questionsMissedArr.length; i++)
         {
             console.log(`Question #${questionsMissedArr[i]}`);
-            console.log(`You answered: ${questionInputArr[questionsMissedArr[i]]}`);
-            console.log(`The Correct Answer is: "${answersArr[questionsMissedArr[i]]}"`);
+            console.log(`You answered: "${questionInputArr[questionsMissedArr[i]-1]}"`);
+            console.log(`The Correct Answer is: "${answersArr[questionsMissedArr[i]-1]}"`);
         }
     }
 }
